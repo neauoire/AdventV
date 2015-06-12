@@ -1,0 +1,1 @@
+{"hp":"10","location":"1","item":"none","exp":"0","lastCommand":"passive"}
