@@ -1,1 +1,1 @@
-{"hp":"10","location":"1","item":"none","exp":"0","lastCommand":"passive"}
+{"hp":5,"location":7,"item":"staff","day":2,"lastMaster":"aliceffekt","las
