@@ -106,18 +106,21 @@ class AdventV
 	#
 
 	def findEvent
+
+		possibleEvents = []
 		# Look for conditional event
 		@location.events.each do |event|
-			if item && event.condition == item.name then return event end
-			if event.condition.to_i > 0 == event.condition.to_i >= hp then return event end
-			return event
+			if item && event.condition == item.name then possibleEvents.push(event)
+			elsif event.condition.to_i > 0 == event.condition.to_i >= hp then possibleEvents.push(event)
+			end
 		end
 		# Look for normal event
 		@location.events.each do |event|
 			if event.condition then next end
+			possibleEvents.push(event)
 			return event
 		end
-		return
+		return possibleEvents.sample
 	end
 
 	def move location
@@ -162,6 +165,7 @@ class AdventV
 			afterHp = @hp + (event.encounter.power * -1)
 			if afterHp > 10 then afterHp = 10 end
 			if afterHp != beforeHp 
+				setHp(afterHp)
 				resolve = "I gained #{(event.encounter.power * -1)}hp"
 			end
 		end

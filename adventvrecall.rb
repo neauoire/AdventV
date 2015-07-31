@@ -45,7 +45,10 @@ client.search("to:adventvrecall", :result_type => "recent").take(1).each do |twe
 
 	$adventv.locations.each do |distance,location|
 		puts "- "+location.name.to_s+"\n"
-		if !tweetCommand.include?(location.name) then next end
+		if !tweetCommand.include?(location.name)
+			puts "skipped"
+			next
+		end
 		if tweetCommand == $adventv.lastCommand then next end
 		$adventv.setLocationId($adventv.locationId + distance)
 		$adventv.setLastMaster(tweetUsername)

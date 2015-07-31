@@ -1,1 +1,1 @@
-{"hp":5,"location":7,"item":"staff","day":2,"lastMaster":"aliceffekt","las
+{"hp":8,"location":10,"item":"sword","day":6,"lastMaster":"auriea","lastCommand":"@adventvrecall the camp!"}

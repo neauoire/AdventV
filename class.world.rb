@@ -56,7 +56,7 @@ class World
 
 	def location_castle
 
-		location = Location.new("casle")
+		location = Location.new("castle")
 		# Battle 2
 		location.addEvent(Event.new(5, Encounter.new("battled a mercenary at",4), nil))
 		# Passive
