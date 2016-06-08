@@ -1,1 +1,0 @@
-{"hp":8,"location":10,"item":"sword","day":6,"lastMaster":"auriea","lastCommand":"@adventvrecall the camp!"}

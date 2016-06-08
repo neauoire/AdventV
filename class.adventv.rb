@@ -16,13 +16,16 @@ class AdventV
 	#
 
 	def loadMemory
-		memoryFilePath = "/var/www/core.xxiivv/public_html/adventv/adventvrecall.memory.txt"
+
+		memoryFilePath = "#{$jiin_path}/disk/auto.adventv/memory.txt"
 		memory = File.read(memoryFilePath)
 		return JSON.parse(memory)
+
 	end
 
 	def saveMemory
-		memoryFilePath = "/var/www/core.xxiivv/public_html/adventv/adventvrecall.memory.txt"
+
+		memoryFilePath = "#{$jiin_path}/disk/auto.adventv/memory.txt"
 		newMemory = {}
 		newMemory["hp"] = @hp
 		newMemory["location"] = @locationId
@@ -32,6 +35,13 @@ class AdventV
 		newMemory["lastMaster"] = @lastMaster
 		newMemory["lastCommand"] = @lastCommand
 		File.open(memoryFilePath, 'w') { |file| file.write(newMemory.to_json) }
+
+	end
+
+	def debug
+
+		return "==========\nHEALTH   : #{hp}\nLOCATION : #{location.name}\nITEM     : #{item.name}\nDAY      : #{day}\nOPTION 1 : "+(locations[0] ? locations[0].name : "")+"\nOPTION 2 : "+(locations[1] ? locations[1].name : "")+"\nOPTION 3 : "+(locations[2] ? locations[2].name : "")+"\n=========="
+
 	end
 
 	#
