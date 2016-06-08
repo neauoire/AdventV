@@ -105,12 +105,12 @@ class AdventV
 	#
 
 	def health
-		if @hp > 0 then return "#{hp}hp" end
-		return "Dead"
+		if @hp > 0 then return hp end
+		return "0"
 	end
 
 	def inventory
-		if @item then return "+#{item.power}" end
+		if @item then return item.power end
 	end
 
 	#
@@ -121,14 +121,12 @@ class AdventV
 		# Look for conditional event
 		@location.events.each do |event|
 			if item && event.condition == item.name then possibleEvents.push(event)
-			elsif event.condition.to_i > 0 == event.condition.to_i >= hp then possibleEvents.push(event)
-			end
+			elsif event.condition.to_i > 0 == event.condition.to_i >= hp then possibleEvents.push(event) end
 		end
 		# Look for normal event
 		@location.events.each do |event|
 			if event.condition then next end
 			possibleEvents.push(event)
-			return event
 		end
 		return possibleEvents.sample
 	end
@@ -212,7 +210,7 @@ class AdventV
 	end
 
 	def print_day
-		return "Day#{day}, #{health}#{inventory} via @#{@lastMaster}"
+		return "Day#{day} Atk#{inventory} Def#{health}, via @#{@lastMaster}"
 	end
 
 end

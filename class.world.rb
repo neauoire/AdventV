@@ -104,9 +104,11 @@ class World
 	def location_cave
 
 		location = Location.new("cave")
-		# Battle 2
+		# Battle
 		location.addEvent(Event.new(5, Encounter.new("battled a cadaver in",4), nil))
 		# Passive
+		location.addEvent(Event.new(nil, Encounter.new("swatted a bat in",2), nil))
+		location.addEvent(Event.new(nil, Encounter.new("batted a rat in",3), nil))
 		location.addEvent(Event.new(nil, Encounter.new("descending into",0), itemWithPower(3) ))
 		return location
 

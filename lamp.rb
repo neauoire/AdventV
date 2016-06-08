@@ -32,16 +32,13 @@ class Adventv
 		elsif query.split(" ").length > 2
 			username = query.split(" ")[1]
 			command  = query.sub("adventv #{username}","").strip
-
-			puts "#{$adventv.debug}\n"
-			puts "Username : #{username}"
-			puts "Command  : #{command}"
-
 			$adventv.locations.each do |distance,location|
 				if !command.include?(location.name) then next end
 				return act(username,command,distance,location)
 			end
 		end
+
+		puts "#{$adventv.debug}\n"
 
 		return nil
 
