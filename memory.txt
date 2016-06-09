@@ -1,1 +1,1 @@
-{"hp":10,"location":1,"item":"none","day":1,"lastMaster":"neauoire","lastCommand":"tower"}
+{"hp":5,"location":7,"item":"none","day":4,"lastMaster":"neauoire","lastCommand":"@recall check out the swamp."}

@@ -28,21 +28,24 @@ class Adventv
 
 	def application query = nil
 
+		query = query.sub("adventv","").strip
 		# Skip already performed commands
 		if query == $adventv.lastCommand then return end
 
+		puts "#{$adventv.debug}\n"
+		puts "Query: #{query}"
+
 		if $adventv.hp <= 0
+			puts "Respawn"
 			return respawn
-		elsif query.split(" ").length > 2
-			username = query.split(" ")[1]
-			command  = query.sub("adventv #{username}","").strip
+		else
+			username = query.split(" ")[0]
+			command  = query.sub("#{username}","").strip
 			$adventv.locations.each do |distance,location|
 				if !command.include?(location.name) then next end
 				return act(username,command,distance,location)
 			end
 		end
-
-		puts "#{$adventv.debug}\n"
 
 		return nil
 
