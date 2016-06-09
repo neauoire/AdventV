@@ -19,7 +19,7 @@ class Adventv
 
 		$world   = World.new()
 		$adventv = AdventV.new()
-		
+
 		@_curse = 900
 		@_thief = 800
 
@@ -63,7 +63,7 @@ class Adventv
 		# end
 
 		# Default
-		return [tweetEntry, location.hasPicture ? graphic($adventv.location.name) : nil]
+		return [tweetEntry, $adventv.hp < 1 ? graphic("death") : (location.hasPicture ? graphic($adventv.location.name) : nil)]
 
 	end
 
