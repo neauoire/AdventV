@@ -1,4 +1,5 @@
 #!/bin/env ruby
+# encoding: utf-8
 
 require 'json'
 require 'date'
@@ -57,12 +58,6 @@ class Adventv
 		tweetEntry = $adventv.echo
 		$adventv.saveMemory
 
-		# Died in Combat
-		# if $adventv.hp <= 0
-		# 	return "I died but I will respawn..", graphic("death")
-		# end
-
-		# Default
 		return [tweetEntry, $adventv.hp < 1 ? graphic("death") : (location.hasPicture ? graphic($adventv.location.name) : nil)]
 
 	end
