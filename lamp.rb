@@ -19,6 +19,9 @@ class Adventv
 
 		$world   = World.new()
 		$adventv = AdventV.new()
+		
+		@_curse = 900
+		@_thief = 800
 
 	end
 
@@ -55,9 +58,9 @@ class Adventv
 		$adventv.saveMemory
 
 		# Died in Combat
-		if $adventv.hp <= 0
-			return "I died but I will respawn..", graphic("death")
-		end
+		# if $adventv.hp <= 0
+		# 	return "I died but I will respawn..", graphic("death")
+		# end
 
 		# Default
 		return [tweetEntry, location.hasPicture ? graphic($adventv.location.name) : nil]
@@ -69,6 +72,7 @@ class Adventv
 		$adventv.setLocationId(1)
 		$adventv.setDay(1)
 		$adventv.setHp(10)
+		$adventv.setItem(nil)
 		$adventv.move($world.location(1))
 		tweetEntry = $adventv.echo
 		$adventv.saveMemory

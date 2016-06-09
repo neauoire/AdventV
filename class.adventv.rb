@@ -40,7 +40,7 @@ class AdventV
 
 	def debug
 
-		return "==========\nHEALTH   : #{hp}\nLOCATION : #{location.name}\nITEM     : #{item.name}\nDAY      : #{day}\nOPTION 1 : "+(locations[0] ? locations[0].name : "")+"\nOPTION 2 : "+(locations[1] ? locations[1].name : "")+"\nOPTION 3 : "+(locations[2] ? locations[2].name : "")+"\n=========="
+		return "==========\nHEALTH   : #{hp}\nLOCATION : #{location.name}\nITEM     : #{item ? item.name : ""}\nDAY      : #{day}\nOPTION 1 : "+(locations[0] ? locations[0].name : "")+"\nOPTION 2 : "+(locations[1] ? locations[1].name : "")+"\nOPTION 3 : "+(locations[2] ? locations[2].name : "")+"\n=========="
 
 	end
 
@@ -156,18 +156,26 @@ class AdventV
 		itemPower = 0
 		if item then itemPower = item.power.to_i end
 
-		# Resolve
-		if event.encounter.power > 0
+		# Battles
+		if event.encounter.power == @_curse
+			resolve = "I was cursed"
+			setHp((@hp/2).to_i)
+		elsif event.encounter.power == @_thief
+				resolve = "I lost my #{@item.name}"
+				@item = nil
+		elsif event.encounter.power > 0
 			hpMod = event.encounter.power - itemPower
-			if hpMod == 0 then
+			if hpMod == 0 || rand(1..5) == 3 then
 				resolve = "my #{@item.name} broke"
 				@item = nil
 			elsif hpMod < 1
 				hpMod = 0
+				resolve = "I survived"
 			else
 				setHp(@hp - hpMod)
 				resolve = "lost #{hpMod}hp"
 			end
+		# Heals
 		elsif event.encounter.power < 0
 			beforeHp = @hp
 			afterHp = @hp + (event.encounter.power * -1)
@@ -193,6 +201,7 @@ class AdventV
 		end
 
 		if resolve == "" then resolve = "nothing happened" end
+		if @hp < 1 then resolve = "I died." end
 
 		return "#{event.encounter.action.capitalize} the #{location.name}, #{resolve}."
 
@@ -200,7 +209,10 @@ class AdventV
 
 	def print_destinations
 
-		if $world.location(@locationId+1).name == location.name
+
+		if @hp < 1 
+			return "I died, but I will respawn."
+		elsif $world.location(@locationId+1).name == location.name
 			return "Go to the #{$world.location(@locationId+2).name.capitalize} or the #{$world.location(@locationId+3).name.capitalize}?"
 		elsif $world.location(@locationId+2).name == location.name
 			return "Go to the #{$world.location(@locationId+1).name.capitalize} or the #{$world.location(@locationId+3).name.capitalize}?"
@@ -210,7 +222,7 @@ class AdventV
 	end
 
 	def print_day
-		return "Day#{day} Atk#{inventory} Def#{health}, via @#{@lastMaster}"
+		return "Day#{day.to_i} Atk#{inventory.to_i} Def#{health.to_i}, via @#{@lastMaster}"
 	end
 
 end

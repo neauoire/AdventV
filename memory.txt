@@ -1,1 +1,1 @@
-{"hp":10,"location":32,"item":"spellbook","day":21,"lastMaster":"neauoire","lastCommand":"necropolis"}
+{"hp":10,"location":1,"item":"none","day":1,"lastMaster":"neauoire","lastCommand":"tower"}
