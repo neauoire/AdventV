@@ -204,7 +204,7 @@ class AdventV
 		end
 
 		if resolve == "" then resolve = "nothing happened" end
-		if @hp < 1 then resolve = "I died." end
+		if @hp < 1 then resolve = "I died" end
 
 		return "#{event.encounter.action.capitalize} the #{location.name}, #{resolve}."
 
@@ -214,7 +214,7 @@ class AdventV
 
 
 		if @hp < 1 
-			return "I died, but I will respawn."
+			return "I will respawn shortly."
 		elsif $world.location(@locationId+1).name == location.name
 			return "Go to the #{$world.location(@locationId+2).name.capitalize} or the #{$world.location(@locationId+3).name.capitalize}?"
 		elsif $world.location(@locationId+2).name == location.name
