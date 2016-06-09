@@ -54,7 +54,7 @@ class World
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("drinking ale at",-1), nil))
 		location.addEvent(Event.new(nil, Encounter.new("fighting a drunk in",2), nil))
-		location.addEvent(Event.new(nil, Encounter.new("drinking poison",@_curse), nil))
+		location.addEvent(Event.new(nil, Encounter.new("drinking poison in",@_curse), nil))
 		return location
 
 	end
@@ -63,7 +63,7 @@ class World
 
 		location = Location.new("castle")
 		# Battle 2
-		location.addEvent(Event.new(5, Encounter.new("battling a mercenary at",4), nil))
+		location.addEvent(Event.new(5, Encounter.new("battling a mercenary in",4), nil))
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("defending",0), itemWithPower(1) ))
 		location.addEvent(Event.new(nil, Encounter.new("meeting the queen of",-2), nil))
@@ -77,9 +77,9 @@ class World
 		# Battle 1
 		location.addEvent(Event.new(6, Encounter.new("fighting a slug at",3), nil))
 		# Passive
-		location.addEvent(Event.new(nil, Encounter.new("swimming in",-1), nil))
+		location.addEvent(Event.new(nil, Encounter.new("swimming at",-1), nil))
 		location.addEvent(Event.new(nil, Encounter.new("punching a serpent at",3), nil))
-		location.addEvent(Event.new(nil, Encounter.new("swimming in",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("swimming at",@_thief), nil))
 		return location
 
 	end
@@ -106,8 +106,8 @@ class World
 		location.addEvent(Event.new(6, Encounter.new("fighting a soldier at",3), nil))
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("sleeping at",-2), nil ))
-		location.addEvent(Event.new(nil, Encounter.new("meeting a wolf",-2), nil))
-		location.addEvent(Event.new(nil, Encounter.new("drinking with a thief",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("meeting a wolf at",-2), nil))
+		location.addEvent(Event.new(nil, Encounter.new("drinking with a thief in",@_thief), nil))
 		return location
 
 	end
@@ -150,7 +150,7 @@ class World
 		location.addEvent(Event.new(4, Encounter.new("fighting a guard in",6), itemWithPower(3) ))
 		# Passive
 		location.addEvent(Event.new( nil, Encounter.new("drinking wine in",-3), nil))
-		location.addEvent(Event.new(nil, Encounter.new("battling a drake",7), nil))
+		location.addEvent(Event.new(nil, Encounter.new("battling a drake at",7), nil))
 		return location
 
 	end
@@ -164,7 +164,7 @@ class World
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("reaching",0), itemWithPower(4) ))
 		location.addEvent(Event.new(nil, Encounter.new("fighting a vampire in",6), nil))
-		location.addEvent(Event.new(nil, Encounter.new("confused",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("confused in",@_thief), nil))
 		return location
 
 	end
@@ -215,7 +215,7 @@ class World
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("exploring",0), itemWithPower(6) ))
 		location.addEvent(Event.new(nil, Encounter.new("battling a zombie in",4), nil))
-		location.addEvent(Event.new(nil, Encounter.new("fighting a ghost",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("fighting a ghost by",@_thief), nil))
 		return location
 
 	end
@@ -228,7 +228,7 @@ class World
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("shopping at",-4), nil ))
 		location.addEvent(Event.new(nil, Encounter.new("fighting wanderers by",3), nil))
-		location.addEvent(Event.new(nil, Encounter.new("playing cards",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("playing cards at",@_thief), nil))
 		return location
 
 	end
@@ -244,8 +244,8 @@ class World
 		# Battle 3
 		location.addEvent(Event.new(4, Encounter.new("fighting the prince at",7), itemWithPower(4) ))
 		# Passive
-		location.addEvent(Event.new(nil, Encounter.new("drinking moonshine",-5), nil))
-		location.addEvent(Event.new(nil, Encounter.new("caught by the guards",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("drinking moonshine in",-5), nil))
+		location.addEvent(Event.new(nil, Encounter.new("caught by the guards in",@_thief), nil))
 		return location
 
 	end
@@ -267,7 +267,7 @@ class World
 
 		location = Location.new("fountain")
 		# Boss
-		location.addEvent(Event.new(5, Encounter.new("assaulting the merfolks",7), itemWithPower(5) ))
+		location.addEvent(Event.new(5, Encounter.new("assaulting the merfolks under",7), itemWithPower(5) ))
 		# Battle 1
 		location.addEvent(Event.new(6, Encounter.new("fighting a leviathan in",5), nil))
 		# Passive
@@ -284,7 +284,7 @@ class World
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("excavating",0), itemWithPower(8) ))
 		location.addEvent(Event.new(nil, Encounter.new("battling a tunneler in",@_curse), nil))
-		location.addEvent(Event.new(nil, Encounter.new("confused",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("confused within",@_thief), nil))
 		return location
 
 	end
@@ -318,10 +318,10 @@ class World
 
 		location = Location.new("portal")
 		# Battle 3
-		location.addEvent(Event.new(4, Encounter.new("fighting god",14), itemWithPower(6) ))
+		location.addEvent(Event.new(4, Encounter.new("fighting the god inside",14), itemWithPower(6) ))
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("traversing",-6), nil ))
-		location.addEvent(Event.new(nil, Encounter.new("battling an orb",3), nil))
+		location.addEvent(Event.new(nil, Encounter.new("battling an orb by",3), nil))
 		return location
 
 	end
