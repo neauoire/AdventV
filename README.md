@@ -6,7 +6,7 @@ Pull requests are encouraged, make sure to leave a comment with your intent.
 
 ##Documentation
 
-Generated with [Jiin](https://github.com/XXIIVV/Jiin), on **08 June 2016**, view the [project documentation](http://wiki.xxiivv.com/ADVENT V).
+Generated with [Jiin](https://github.com/XXIIVV/Jiin), on **10 June 2016**, view the [project documentation](http://wiki.xxiivv.com/ADVENT V).
 
 ##License
 

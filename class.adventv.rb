@@ -167,7 +167,7 @@ class AdventV
 				resolve = "I lost my #{@item.name}"
 				@item = nil
 		elsif event.encounter.power > 0
-			hpMod = event.encounter.power - itemPower
+			hpMod = (event.encounter.power + rand(1..3).to_i) - itemPower
 			if hpMod == 0 || rand(1..5) == 3 then
 				resolve = "my #{@item.name} broke"
 				@item = nil
