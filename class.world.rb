@@ -55,6 +55,7 @@ class World
 		location.addEvent(Event.new(nil, Encounter.new("drinking ale at",-1), nil))
 		location.addEvent(Event.new(nil, Encounter.new("fighting a drunk in",2), nil))
 		location.addEvent(Event.new(nil, Encounter.new("drinking poison in",@_curse), nil))
+		location.addEvent(Event.new(nil, Encounter.new("playing games",@_thief), nil))
 		return location
 
 	end
@@ -67,6 +68,7 @@ class World
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("defending",0), itemWithPower(1) ))
 		location.addEvent(Event.new(nil, Encounter.new("meeting the queen of",-2), nil))
+		location.addEvent(Event.new(nil, Encounter.new("fending off an assault",5), nil))
 		return location
 
 	end
