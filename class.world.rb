@@ -166,7 +166,8 @@ class World
 		# Passive
 		location.addEvent(Event.new(nil, Encounter.new("reaching",0), itemWithPower(4) ))
 		location.addEvent(Event.new(nil, Encounter.new("fighting a vampire in",6), nil))
-		location.addEvent(Event.new(nil, Encounter.new("confused in",@_thief), nil))
+		location.addEvent(Event.new(nil, Encounter.new("fighting tunnelers",5), nil))
+		location.addEvent(Event.new(nil, Encounter.new("fighting a vampire in",6), nil))
 		return location
 
 	end
