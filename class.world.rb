@@ -282,6 +282,7 @@ class World
 	def location_mines
 
 		location = Location.new("mines")
+		location.addPicture
 		# Battle 3
 		location.addEvent(Event.new(4, Encounter.new("fighting a goblin",7), nil))
 		# Passive
