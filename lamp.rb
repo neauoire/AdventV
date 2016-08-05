@@ -5,12 +5,12 @@ require 'json'
 require 'date'
 require 'rubygems'
 
-require_relative 'class.adventv.rb'
-require_relative 'class.item.rb'
-require_relative 'class.encounter.rb'
-require_relative 'class.location.rb'
-require_relative 'class.world.rb'
-require_relative 'class.event.rb'
+require_relative 'adventv.rb'
+require_relative 'item.rb'
+require_relative 'encounter.rb'
+require_relative 'location.rb'
+require_relative 'world.rb'
+require_relative 'event.rb'
 
 class Adventv
 
@@ -28,23 +28,34 @@ class Adventv
 
 	def application query = nil
 
-		query = query.sub("adventv","").strip
-		# Skip already performed commands
-		if query == $adventv.lastCommand then return end
+		# Respawn
+		if $adventv.hp <= 0 then return respawn end
 
-		puts "#{$adventv.debug}\n"
-		puts "Query: #{query}"
-
-		if $adventv.hp <= 0
-			puts "Respawn"
-			return respawn
-		else
-			username = query.split(" ")[0]
-			command  = query.sub("#{username}","").strip
-			$adventv.locations.each do |distance,location|
-				if !command.include?(location.name) then next end
-				return act(username,command,distance,location)
+		# Reply
+		require_relative("../apis.tweet/secret.adventv.config.rb")
+		client = Twitter::REST::Client.new($twitter_config)
+		client.search("to:adventvrecall", :result_type => "recent").take(1).each do |tweet|
+			answer = response(tweet.user.screen_name, tweet.text.downcase)
+			if !answer then return "No answer" end
+			if answer.last
+				client.update_with_media(answer.first, answer.last, in_reply_to_status_id: tweet.id)
+			else
+				client.update(answer.first, in_reply_to_status_id: tweet.id)
 			end
+			client.follow(tweet.user.screen_name)
+		end
+
+	end
+
+	def response username, command
+
+		if command == $adventv.lastCommand then return end
+
+		username = query.split(" ")[0]
+		command  = query.sub("#{username}","").strip
+		$adventv.locations.each do |distance,location|
+			if !command.include?(location.name) then next end
+			return act(username,command,distance,location)
 		end
 
 		return nil
